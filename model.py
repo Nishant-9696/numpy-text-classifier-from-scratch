@@ -19,8 +19,17 @@ def tokenize(text: str) -> list:
     text=text.split()
     return text
 
-# Step 3 - tokenize_corpus (not yet solved)
-# TODO: implement
+# Step 3 - tokenize_corpus
+import re
+def tokenize_corpus(texts: list) -> list:
+    result=[]
+    for i in texts:
+        text= i[0] if isinstance(i,list) else i
+        text =text.lower()
+        text = re.sub(r'[^a-zA-Z]', ' ',text)
+        text =text.split()
+        result.append(text)
+    return result
 
 # Step 4 - split_train_val_test_indices (not yet solved)
 # TODO: implement
