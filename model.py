@@ -72,8 +72,17 @@ def build_vocabulary(word_counts: dict, max_size: int) -> dict:
 
     return vocabulary
 
-# Step 7 - tokens_to_bow (not yet solved)
-# TODO: implement
+# Step 7 - tokens_to_bow
+import numpy as np
+
+def tokens_to_bow(tokens: list, vocab: dict) -> np.ndarray:
+    bow = np.zeros(len(vocab), dtype=float)
+
+    for word in tokens:
+        if word in vocab:
+            bow[vocab[word]] += 1
+
+    return bow
 
 # Step 8 - corpus_to_bow_matrix (not yet solved)
 # TODO: implement
