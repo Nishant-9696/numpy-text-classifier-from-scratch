@@ -106,8 +106,10 @@ def corpus_to_bow_matrix(tokenized_docs: list, vocab: dict) -> np.ndarray:
 
     return np.array(matrix, dtype=float)
 
-# Step 9 - compute_document_frequencies (not yet solved)
-# TODO: implement
+# Step 9 - compute_document_frequencies
+def compute_document_frequencies(bow_matrix: np.ndarray) -> np.ndarray:
+    df = np.sum(bow_matrix > 0, axis=0)
+    return df
 
 # Step 10 - compute_idf (not yet solved)
 # TODO: implement
