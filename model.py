@@ -119,8 +119,12 @@ def compute_idf(df: np.ndarray, n_docs: int) -> np.ndarray:
     idf = np.log((n_docs + 1) / (df + 1)) + 1
     return idf
 
-# Step 11 - transform_tfidf (not yet solved)
-# TODO: implement
+# Step 11 - transform_tfidf
+import numpy as np
+
+def transform_tfidf(bow_matrix: np.ndarray, idf: np.ndarray) -> np.ndarray:
+    # Multiply each term count by its corresponding IDF weight
+    return bow_matrix * idf
 
 # Step 12 - fit_tfidf (not yet solved)
 # TODO: implement
