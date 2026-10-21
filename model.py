@@ -126,8 +126,11 @@ def transform_tfidf(bow_matrix: np.ndarray, idf: np.ndarray) -> np.ndarray:
     # Multiply each term count by its corresponding IDF weight
     return bow_matrix * idf
 
-# Step 12 - fit_tfidf (not yet solved)
-# TODO: implement
+# Step 12 - fit_tfidf
+def fit_tfidf(bow_train: np.ndarray) -> np.ndarray:
+    df = compute_document_frequencies(bow_train)
+    idf = compute_idf(df, bow_train.shape[0])
+    return idf
 
 # Step 13 - sigmoid (not yet solved)
 # TODO: implement
