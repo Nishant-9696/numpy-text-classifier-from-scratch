@@ -132,8 +132,18 @@ def fit_tfidf(bow_train: np.ndarray) -> np.ndarray:
     idf = compute_idf(df, bow_train.shape[0])
     return idf
 
-# Step 13 - sigmoid (not yet solved)
-# TODO: implement
+# Step 13 - sigmoid
+def sigmoid(z: np.ndarray) -> np.ndarray:
+    z = np.asarray(z, dtype=float)
+    result = np.empty_like(z)
+
+    pos = z >= 0
+    result[pos] = 1 / (1 + np.exp(-z[pos]))
+
+    exp_z = np.exp(z[~pos])
+    result[~pos] = exp_z / (1 + exp_z)
+
+    return result
 
 # Step 14 - logistic_predict_proba (not yet solved)
 # TODO: implement
