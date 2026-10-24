@@ -156,8 +156,24 @@ def logistic_predict_proba(X: np.ndarray, w: np.ndarray, b: float) -> np.ndarray
         r.append(s)
     return r
 
-# Step 15 - binary_cross_entropy (not yet solved)
-# TODO: implement
+# Step 15 - binary_cross_entropy
+import numpy as np
+
+def binary_cross_entropy(y_true: np.ndarray, y_prob: np.ndarray, w: np.ndarray, l2_lambda: float) -> float:
+    # Clip probabilities to avoid log(0)
+    y_prob = np.clip(y_prob, 1e-15, 1 - 1e-15)
+
+    # Compute binary cross-entropy
+    bce = -np.mean(
+        y_true * np.log(y_prob) +
+        (1 - y_true) * np.log(1 - y_prob)
+    )
+
+    # Compute L2 regularization penalty
+    l2_penalty = l2_lambda * np.sum(w ** 2) / 2
+
+    # Return total loss
+    return float(bce + l2_penalty)
 
 # Step 16 - logistic_gradients (not yet solved)
 # TODO: implement
